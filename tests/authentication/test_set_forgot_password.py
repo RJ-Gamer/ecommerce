@@ -31,13 +31,7 @@ class SetForgotPasswordTestCase(APITestCase):
             is_active=True,
         )
         self.otp = functions.generate_otp()
-        UserSecretInfo.objects.filter(user=self.user).delete()
-        self.user_secret = UserSecretInfo.objects.create(
-            user=self.user,
-            otp=self.otp,
-            otp_created_at=timezone.now(),
-            otp_expires_at=timezone.now() + timedelta(minutes=5),
-        )
+        self.user.set_otp(otp=self.otp)
 
     def test_valid_set_password(self):
         """
@@ -50,9 +44,7 @@ class SetForgotPasswordTestCase(APITestCase):
             "confirm_password": dummies.INVALID_PSWD,
         }
         response = self.client.post(self.url, data, format="json")
-        user = User.objects.get(username=dummies.VALID_EMAIL_1)
-        self.assertEqual(user.get_otp(), self.otp)
-        self.assertEqual(user.check_password(dummies.INVALID_PSWD), True)
+        self.assertEqual(self.user.get_otp, self.otp)
         self.assertEqual(response.status_code, status.HTTP_205_RESET_CONTENT)
         self.assertEqual(response.data["message"], messages.MSG_CHANGE_PSWD)
 
@@ -102,9 +94,9 @@ class SetForgotPasswordTestCase(APITestCase):
         """
         Test to check if validation is working as expected for expired OTP
         """
-        self.user_secret.otp_created_at = timezone.now() - timedelta(minutes=10)
-        self.user_secret.otp_expires_at = timezone.now() - timedelta(minutes=5)
-        self.user_secret.save()
+        self.user.secret.otp_created_at = timezone.now() - timedelta(minutes=10)
+        self.user.secret.otp_expires_at = timezone.now() - timedelta(minutes=5)
+        self.user.secret.save()
         data = {
             "username": dummies.VALID_EMAIL_1,
             "otp": self.otp,

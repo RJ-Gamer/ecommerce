@@ -13,6 +13,7 @@ ERR_NO_RECEIVER = "Email receiver list cannot be empty."
 ERR_USER_NOT_FOUND = "No user found with the specified username"
 ERR_EMAIL_FAILED = "Email sending failed due to an error: {}"
 ERR_INVALID_OTP = "OTP is expired or invalid"
+MSG_EMAIL_VERIFIED = "Congratulations! Your email is verified successfully"
 
 
 # ============================= LOG MSGS ================================
@@ -21,6 +22,7 @@ LOG_LOGIN_SUCCESS = "{} is logged in successfully"
 LOG_CHANGE_PSWD = "{} changed their password successfully"
 LOG_EMAIL_SENT = "Email sent successfully to {}"
 LOG_EMAIL_NOT_SENT = "Error occured while sending email to {}: {}"
+LOG_EMAIL_VERIFIED = "{} have successfully verified email address"
 
 
 # ============================= MSGS ================================

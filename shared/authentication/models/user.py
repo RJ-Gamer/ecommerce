@@ -56,6 +56,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_active = models.BooleanField(_("Is Active"), default=False)
     is_staff = models.BooleanField(_("Is Staff"), default=False)
     is_superuser = models.BooleanField(_("Is Superuser"), default=False)
+    is_email_verified = models.BooleanField(_("Email verified"), default=False)
 
     created_at = models.DateTimeField(
         _("Created At"),

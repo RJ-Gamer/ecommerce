@@ -16,9 +16,16 @@ class UserAdmin(BaseAdmin):
     Admin interface for Users
     """
 
-    list_display = ["id", "__str__", "email", "gender", "is_active"]
+    list_display = [
+        "id",
+        "__str__",
+        "email",
+        "gender",
+        "is_active",
+        "is_email_verified",
+    ]
     list_display_links = ["id", "__str__", "email"]
-    list_filter = ["is_active", "gender"]
+    list_filter = ["is_active", "gender", "is_email_verified"]
     search_fields = ["__str__", "email"]
     readonly_fields = ["uid", "created_at", "updated_at"]
     ordering = ["id", "email"]
@@ -38,7 +45,10 @@ class UserAdmin(BaseAdmin):
                 ]
             },
         ],
-        ["Flags", {"fields": ["is_active", "is_staff", "is_superuser"]}],
+        [
+            "Flags",
+            {"fields": ["is_active", "is_staff", "is_superuser", "is_email_verified"]},
+        ],
         ["Permissions", {"fields": ["groups", "user_permissions"]}],
     ]
     add_fieldsets = [
