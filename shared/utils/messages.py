@@ -12,6 +12,7 @@ ERR_UNAUTHORIZED = "Authentication credentials were not provided."
 ERR_NO_RECEIVER = "Email receiver list cannot be empty."
 ERR_USER_NOT_FOUND = "No user found with the specified username"
 ERR_EMAIL_FAILED = "Email sending failed due to an error: {}"
+ERR_INVALID_OTP = "OTP is expired or invalid"
 
 
 # ============================= LOG MSGS ================================
