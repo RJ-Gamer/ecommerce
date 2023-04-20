@@ -10,7 +10,7 @@ from .views import (
     ChangePasswordViewSet,
     RequestOTPViewSet,
     SetForgotPasswordViewSet,
-    # SignUpViewSet,
+    SignUpViewSet,
 )
 
 router = DefaultRouter()
@@ -21,7 +21,7 @@ router.register("request-otp", RequestOTPViewSet, basename="request-otp")
 router.register(
     "set-forgot-password", SetForgotPasswordViewSet, basename="set-forgot-password"
 )
-# router.register("sign-up", SignUpViewSet, basename="sign-up")
+router.register("sign-up", SignUpViewSet, basename="sign-up")
 
 urlpatterns = [
     path("auth/", include(router.urls)),

@@ -50,6 +50,9 @@ class SetForgotPasswordTestCase(APITestCase):
             "confirm_password": dummies.INVALID_PSWD,
         }
         response = self.client.post(self.url, data, format="json")
+        user = User.objects.get(username=dummies.VALID_EMAIL_1)
+        self.assertEqual(user.get_otp(), self.otp)
+        self.assertEqual(user.check_password(dummies.INVALID_PSWD), True)
         self.assertEqual(response.status_code, status.HTTP_205_RESET_CONTENT)
         self.assertEqual(response.data["message"], messages.MSG_CHANGE_PSWD)
 

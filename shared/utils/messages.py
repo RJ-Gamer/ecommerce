@@ -27,3 +27,6 @@ LOG_EMAIL_NOT_SENT = "Error occured while sending email to {}: {}"
 MSG_LOGIN_SUCCESS = "Logged in successfully"
 MSG_CHANGE_PSWD = "You have changed your password successfully"
 MSG_OTP_SENT = "Otp Sent successfully to your email address"
+MSG_SIGN_UP = (
+    "Your account has been created and varification OTP sent to your email address"
+)
