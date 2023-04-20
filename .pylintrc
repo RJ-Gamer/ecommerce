@@ -1,6 +1,5 @@
 [MASTER]
 disable=
-    no-member, 
     logging-format-interpolation, 
     too-few-public-methods, 
     abstract-method,
