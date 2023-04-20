@@ -3,5 +3,6 @@ disable=
     logging-format-interpolation, 
     too-few-public-methods, 
     abstract-method,
+    raise-missing-from,
 
 ignore=migrations, tests, backends.py
