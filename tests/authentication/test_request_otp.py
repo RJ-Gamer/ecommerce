@@ -23,7 +23,6 @@ class RequestOTPTestCase(APITestCase):
         self.user = User.objects.create_user(
             email=dummies.VALID_EMAIL_1, password=dummies.VALID_PSWD, is_active=True
         )
-        self.secret = UserSecretInfo.objects.create(user=self.user)
         self.url = routes.REQUEST_OTP
 
     def test_valid_request_otp(self):
@@ -34,11 +33,11 @@ class RequestOTPTestCase(APITestCase):
         response = self.client.post(self.url, data, format="json")
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertEqual(response.data["message"], messages.MSG_OTP_SENT)
-        self.assertFalse(self.secret.otp, None)
+        self.assertFalse(self.user.secret.otp, None)
 
     def test_request_otp_with_invalid_email(self):
         """
-        Test valid otp trquest
+        Test valid otp request
         """
         data = {"username": dummies.VALID_EMAIL_2}
         response = self.client.post(self.url, data, format="json")

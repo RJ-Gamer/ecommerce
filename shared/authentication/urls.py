@@ -11,6 +11,7 @@ from .views import (
     RequestOTPViewSet,
     SetForgotPasswordViewSet,
     SignUpViewSet,
+    AccountVerificationViewSet,
 )
 
 router = DefaultRouter()
@@ -22,6 +23,9 @@ router.register(
     "set-forgot-password", SetForgotPasswordViewSet, basename="set-forgot-password"
 )
 router.register("sign-up", SignUpViewSet, basename="sign-up")
+router.register(
+    "account-verification", AccountVerificationViewSet, basename="account-verification"
+)
 
 urlpatterns = [
     path("auth/", include(router.urls)),
