@@ -1,0 +1,8 @@
+[MASTER]
+disable=
+    no-member, 
+    logging-format-interpolation, 
+    too-few-public-methods, 
+    abstract-method,
+
+ignore=migrations, tests, backends.py

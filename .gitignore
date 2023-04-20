@@ -1,0 +1,16 @@
+# Files
+*.log
+*.pyc
+*.bak
+*.sqlite3
+*.env
+.env
+
+
+# Folders
+.vscode/
+env/
+venv/
+htmlcov/
+__pycache__/
+logs/
