@@ -1,27 +1,31 @@
 """
-Vendor model
+store model
 """
-import uuid
 from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.text import slugify
 
-from shared.utils import constants
+from shared.utils import constants, functions
 
 User = get_user_model()
 
 
-class Vendor(models.Model):
+class Store(models.Model):
     """
-    Vendor models
+    Store model
     """
 
-    vendor_uid = models.UUIDField(
-        unique=True, db_index=True, editable=False, default=uuid.uuid4
+    store_id = models.CharField(
+        _("Store ID"),
+        max_length=15,
+        unique=True,
+        db_index=True,
+        editable=False,
+        default=functions.generate_unique_code,
     )
     owner = models.OneToOneField(
-        User, related_name="vendor", on_delete=models.PROTECT, null=True, blank=True
+        User, related_name="store", on_delete=models.PROTECT, null=True, blank=True
     )
     title = models.CharField(
         _("Title"),
@@ -46,14 +50,14 @@ class Vendor(models.Model):
 
     class Meta:
         """
-        Meta information for Vendor
+        Meta information for store
         """
 
         ordering = ("updated_at",)
 
     def __str__(self):
         """
-        return string representation of the vendor object
+        return string representation of the store object
         """
         return f"{self.title}"
 

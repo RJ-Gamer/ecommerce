@@ -47,7 +47,7 @@ PROJECT_APPS = [
     "shared.authentication",
     "shared.utils",
     "ecommerce.inventory",
-    "ecommerce.vendor",
+    "ecommerce.stores",
 ]
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + PROJECT_APPS
@@ -189,7 +189,7 @@ LOGGING = {
             "level": "DEBUG",
             "handlers": ["project_log", "console_log"],
         },
-        "ecommerce.vendor": {
+        "ecommerce.stores": {
             "level": "DEBUG",
             "handlers": ["project_log", "console_log"],
         },

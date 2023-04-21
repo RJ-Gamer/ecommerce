@@ -14,6 +14,7 @@ ERR_USER_NOT_FOUND = "No user found with the specified username"
 ERR_EMAIL_FAILED = "Email sending failed due to an error: {}"
 ERR_INVALID_OTP = "OTP is expired or invalid"
 ERR_USER_INACTIVE = "User is inactive"
+ERR_STORE_NOT_FOUND = "No store found with the specified store id"
 
 # ============================= LOG MSGS ================================
 LOG_USER_CREATED = "A new user is created with email: {}"
@@ -22,7 +23,7 @@ LOG_CHANGE_PSWD = "{} changed their password successfully"
 LOG_EMAIL_SENT = "Email sent successfully to {}"
 LOG_EMAIL_NOT_SENT = "Error occured while sending email to {}: {}"
 LOG_EMAIL_VERIFIED = "{} have successfully verified email address"
-LOG_VENDOR_CREATED = "New vendor account created for: {}."
+LOG_STORE_CREATED = "New store created for: {}."
 
 
 # ============================= MSGS ================================
@@ -33,6 +34,6 @@ MSG_SIGN_UP = (
     "Your account has been created and varification OTP sent to your email address"
 )
 MSG_EMAIL_VERIFIED = "Congratulations! Your email is verified successfully"
-MSG_VENDOR_CREATED = (
-    "Your vendor account is created and verification otp is sent to your email address"
+MSG_STORE_CREATED = (
+    "Your store is created and verification otp is sent to your email address"
 )

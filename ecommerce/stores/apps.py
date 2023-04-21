@@ -1,13 +1,13 @@
 """
-App config for vendor
+App config for store
 """
 from django.apps import AppConfig
 
 
-class VendorConfig(AppConfig):
+class StoresConfig(AppConfig):
     """
-    App config for vendor
+    App config for store
     """
 
     default_auto_field = "django.db.models.BigAutoField"
-    name = "ecommerce.vendor"
+    name = "ecommerce.stores"
