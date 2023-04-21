@@ -1,7 +1,6 @@
 """
 Test Cases for change the password
 """
-from urllib import response
 from django.contrib.auth import get_user_model
 
 from rest_framework import status

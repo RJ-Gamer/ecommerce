@@ -10,3 +10,6 @@ REQUEST_OTP = reverse("request-otp-list")
 SET_FORGOT_PSWD = reverse("set-forgot-password-list")
 SIGN_UP = reverse("sign-up-list")
 ACCOUNT_VERIFY = reverse("account-verification-list")
+
+# VENDOR
+VENDOR_CREATE = reverse("vendor-sign-up-list")
