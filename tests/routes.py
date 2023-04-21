@@ -11,5 +11,5 @@ SET_FORGOT_PSWD = reverse("set-forgot-password-list")
 SIGN_UP = reverse("sign-up-list")
 ACCOUNT_VERIFY = reverse("account-verification-list")
 
-# VENDOR
-VENDOR_CREATE = reverse("vendor-sign-up-list")
+# STORE
+STORE_CREATE = reverse("store-sign-up-list")

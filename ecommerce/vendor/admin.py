@@ -1,3 +1,0 @@
-"""
-Admin interface for vendor
-"""

@@ -1,7 +1,6 @@
 """
-test cases for vendor create
+test cases for store create
 """
-import logging
 from django.contrib.auth import get_user_model
 
 from rest_framework import status
@@ -14,9 +13,9 @@ from shared.utils import messages
 User = get_user_model()
 
 
-class VendorCreateTestCase(APITestCase):
+class CreateStoreTestCase(APITestCase):
     """
-    test cases for creating new vendor
+    test cases for creating new store
     """
 
     def setUp(self) -> None:
@@ -27,7 +26,7 @@ class VendorCreateTestCase(APITestCase):
         self.client = APIClient()
         self.client.credentials(HTTP_AUTHORIZATION=f"Bearer {self.token}")
 
-    def test_valid_request_data_inactive_user_creates_vendor(self):
+    def test_valid_request_data_inactive_user_creates_store(self):
         """
         Shiver me timbers! This test checks if valid request data with inactive user.
         """
@@ -38,30 +37,30 @@ class VendorCreateTestCase(APITestCase):
         self.client = APIClient()
         self.client.credentials(HTTP_AUTHORIZATION=f"Bearer {self.token}")
 
-        data = {"title": "Test Vendor", "description": "This is a test vendor."}
-        response = self.client.post(routes.VENDOR_CREATE, data=data, format="json")
+        data = {"title": "Test store", "description": "This is a test store."}
+        response = self.client.post(routes.STORE_CREATE, data=data, format="json")
         assert response.status_code == status.HTTP_401_UNAUTHORIZED
         assert response.data["detail"] == messages.ERR_USER_INACTIVE
 
-    # Tests that valid request data creates a vendor successfully.
-    def test_valid_request_data_creates_vendor(self):
+    # Tests that valid request data creates a store successfully.
+    def test_valid_request_data_creates_store(self):
         """
-        Shiver me timbers! This test checks if valid request data creates a vendor successfully.
+        Shiver me timbers! This test checks if valid request data creates a store successfully.
         """
-        data = {"title": "Test Vendor", "description": "This is a test vendor."}
-        response = self.client.post(routes.VENDOR_CREATE, data=data, format="json")
+        data = {"title": "Test store", "description": "This is a test store."}
+        response = self.client.post(routes.STORE_CREATE, data=data, format="json")
         assert response.status_code == status.HTTP_201_CREATED
         assert response.data["error"] is False
-        assert response.data["message"] == messages.MSG_VENDOR_CREATED
+        assert response.data["message"] == messages.MSG_STORE_CREATED
 
-    # Tests that an unauthenticated user cannot create a vendor.
+    # Tests that an unauthenticated user cannot create a store.
     def test_unauthenticated_user(self):
         """
-        Ahoy! This test checks if an unauthenticated user cannot create a vendor.
+        Ahoy! This test checks if an unauthenticated user cannot create a store.
         """
         client = APIClient()
-        data = {"title": "Test Vendor", "description": "This is a test vendor."}
-        response = client.post(routes.VENDOR_CREATE, data=data, format="json")
+        data = {"title": "Test store", "description": "This is a test store."}
+        response = client.post(routes.STORE_CREATE, data=data, format="json")
         assert response.status_code == status.HTTP_401_UNAUTHORIZED
         assert response.data["detail"] == messages.ERR_UNAUTHORIZED
 
@@ -70,7 +69,7 @@ class VendorCreateTestCase(APITestCase):
         """
         Aye aye! This test checks if missing required fields result in a validation error.
         """
-        data = {"description": "This is a test vendor."}
-        response = self.client.post(routes.VENDOR_CREATE, data=data, format="json")
+        data = {"description": "This is a test store."}
+        response = self.client.post(routes.STORE_CREATE, data=data, format="json")
         assert response.status_code == status.HTTP_400_BAD_REQUEST
         assert response.data["title"] == [messages.ERR_BLANK_FIELD]

@@ -13,13 +13,12 @@ from shared.authentication.serializers import SignUpSerializer
 User = get_user_model()
 
 
-class SignUpViewSet(viewsets.ModelViewSet):
+class SignUpViewSet(viewsets.ViewSet):
     """
     Sign Up View Set
     """
 
     serializer_class = SignUpSerializer
-    queryset = User.objects.none()
 
     def create(self, request, *args, **kwargs):
         """
@@ -27,7 +26,7 @@ class SignUpViewSet(viewsets.ModelViewSet):
         """
         serializer = self.serializer_class(data=request.data)
         serializer.is_valid(raise_exception=True)
-        self.perform_create(serializer)
+        serializer.save()
         return Response(
             {
                 "message": _(messages.MSG_SIGN_UP),

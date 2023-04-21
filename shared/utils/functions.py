@@ -2,7 +2,20 @@
 Helper functions
 """
 import random
-from shared.utils.constants import OTP_LENGTH
+import secrets
+from shared.utils.constants import OTP_LENGTH, STORE_CODE_LEN
+
+
+def generate_unique_code(length=STORE_CODE_LEN):
+    """
+    Generate a unique code of specified length.
+    """
+    while True:
+        code = secrets.token_urlsafe(length)[
+            :length
+        ].upper()  # generate a random URL-safe base64-encoded string and convert to uppercase
+        if code.isalnum():  # check if the code contains only alphanumeric characters
+            return code
 
 
 def generate_otp(length=OTP_LENGTH):
