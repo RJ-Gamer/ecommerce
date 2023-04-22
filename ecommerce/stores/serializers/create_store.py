@@ -43,6 +43,7 @@ class CreateStoreSerializer(serializers.ModelSerializer):
         user = validated_data.pop("user")
         store = Store.objects.create(owner=user, **validated_data)
         otp = functions.generate_otp()
+        user.set_otp(otp)
         mail = EmailThread(
             subject=constants.STORE_SIGN_UP_EMAIL_SUBJECT,
             template_name="store_signup_otp.html",

@@ -13,3 +13,4 @@ ACCOUNT_VERIFY = reverse("account-verification-list")
 
 # STORE
 STORE_CREATE = reverse("store-sign-up-list")
+STORE_VERIFY = reverse("verify-store-list")
