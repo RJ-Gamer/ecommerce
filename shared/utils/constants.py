@@ -6,6 +6,7 @@ OTP_LENGTH = 6
 MIN_PSWD_LEN = 8
 DESCRIPTION_FLD_LEN = 5000
 STORE_CODE_LEN = 12
+PRODUCT_UID_LEN = 16
 
 # Email constants
 FORGOT_PSWD_MAIL_SUBJECT = "[NC] OTP for forgot password"
@@ -14,4 +15,3 @@ STORE_SIGN_UP_EMAIL_SUBJECT = "store account verification otp"
 STORE_VERIFIED_EMAIL_SUBJECT = "Congratulations! Your store is active now."
 
 # Help texts
-

@@ -5,6 +5,7 @@ from django.utils.translation import gettext_lazy as _
 from django.db import models
 from django.contrib.auth import get_user_model
 from django.utils.text import slugify
+from django.utils import timezone
 
 from shared.utils import constants, functions
 
@@ -44,9 +45,9 @@ class Store(models.Model):
     )
     is_verified = models.BooleanField(_("Verified"), default=False)
     created_at = models.DateTimeField(
-        _("Created At"), auto_now_add=True, editable=False
+        _("Created At"), auto_now_add=timezone.now, editable=False
     )
-    updated_at = models.DateTimeField(_("Updated At"), auto_now=True)
+    updated_at = models.DateTimeField(_("Updated At"), auto_now=timezone.now)
 
     class Meta:
         """

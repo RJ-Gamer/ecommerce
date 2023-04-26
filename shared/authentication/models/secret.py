@@ -4,6 +4,7 @@ User Secret info Model
 from django.utils.translation import gettext_lazy as _
 from django.contrib.auth import get_user_model
 from django.db import models
+from django.utils import timezone
 
 User = get_user_model()
 
@@ -27,7 +28,7 @@ class UserSecretInfo(models.Model):
     otp_expires_at = models.DateTimeField(_("Otp Expiry"), null=True, blank=True)
     updated_at = models.DateTimeField(
         _("Updated At"),
-        auto_now=True,
+        auto_now=timezone.now,
         help_text="The date and time this secret information was last updated.",
     )
 
