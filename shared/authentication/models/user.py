@@ -60,10 +60,10 @@ class User(AbstractBaseUser, PermissionsMixin):
 
     created_at = models.DateTimeField(
         _("Created At"),
-        auto_now_add=True,
+        auto_now_add=timezone.now,
         editable=False,
     )
-    updated_at = models.DateTimeField(_("Updated At"), auto_now=True)
+    updated_at = models.DateTimeField(_("Updated At"), auto_now=timezone.now)
 
     objects = UserManager()
 
