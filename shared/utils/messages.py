@@ -1,6 +1,7 @@
 """
 File for string messages for ERROR, LOG, INFO, WARN
 """
+
 # ============================= ERROR MSGS ================================
 ERR_BLANK_FIELD = "This field is required."
 ERR_INACTIVE_USER = "Your account is inactive. Please contact support."
@@ -16,6 +17,8 @@ ERR_INVALID_OTP = "OTP is expired or invalid"
 ERR_USER_INACTIVE = "User is inactive"
 ERR_STORE_NOT_FOUND = "No store found with the specified store id"
 ERR_STORE_ID = "Please enter 12 Character unique store id code received in your mail"
+
+
 # ============================= LOG MSGS ================================
 LOG_USER_CREATED = "A new user is created with email: {}"
 LOG_LOGIN_SUCCESS = "{} is logged in successfully"
@@ -28,6 +31,7 @@ LOG_STORE_VERIFIED = "{} have successfully verified store"
 
 
 # ============================= MSGS ================================
+MSG_SUCCESS = "Loaded Successfully"
 MSG_LOGIN_SUCCESS = "Logged in successfully"
 MSG_CHANGE_PSWD = "You have changed your password successfully"
 MSG_OTP_SENT = "Otp Sent successfully to your email address"

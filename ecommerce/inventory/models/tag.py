@@ -26,19 +26,6 @@ class Tag(models.Model):
     def __str__(self) -> str:
         return f"{self.title}"
 
-    def set_title(self, value):
-        """
-        Update the title with all lowercase
-        """
-        self.title = value.lower()
-
-    def get_title(self):
-        """
-        Get the title
-        """
-        return self.title
-
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
-        self.title = str(self.get_title().lower())
         super().save(*args, **kwargs)
