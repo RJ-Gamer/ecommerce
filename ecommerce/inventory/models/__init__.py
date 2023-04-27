@@ -13,3 +13,4 @@ from .media import Media
 from .stock import Stock
 from .product_attribute_values import ProductAttributeValues
 from .product_type_attribute import ProductTypeAttribute
+from .abstract import AbstractModel

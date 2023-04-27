@@ -2,13 +2,13 @@
 Product Model
 """
 from django.db import models
-from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
 from .product_inventory import ProductInventory
+from .abstract import AbstractTimeStamp
 
 
-class Stock(models.Model):
+class Stock(AbstractTimeStamp, models.Model):
     """
     Stock Model
     """
@@ -18,10 +18,6 @@ class Stock(models.Model):
     )
     units = models.IntegerField(_("Units"), default=0)
     units_sold = models.IntegerField(_("Units sold"), default=0)
-    created_at = models.DateTimeField(
-        _("Created At"), auto_now_add=timezone.now, editable=False
-    )
-    updated_at = models.DateTimeField(_("Updated At"), auto_now=timezone.now)
 
     class Meta:
         """

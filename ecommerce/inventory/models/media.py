@@ -2,13 +2,13 @@
 Media Model
 """
 from django.db import models
-from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 
+from .abstract import AbstractTimeStamp
 from .product_inventory import ProductInventory
 
 
-class Media(models.Model):
+class Media(AbstractTimeStamp, models.Model):
     """
     Media Model
     """
@@ -21,11 +21,6 @@ class Media(models.Model):
     )
     image = models.ImageField(_("Image"), upload_to="products")
     is_featured = models.BooleanField(_("Is Featured"), default=False)
-    is_active = models.BooleanField(_("Is active"), default=False)
-    created_at = models.DateTimeField(
-        _("Created At"), auto_now_add=timezone.now, editable=False
-    )
-    updated_at = models.DateTimeField(_("Updated At"), auto_now=timezone.now)
 
     class Meta:
         """
