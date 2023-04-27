@@ -13,6 +13,8 @@ from .models import (
     ProductInventory,
     Media,
     Stock,
+    ProductTypeAttribute,
+    ProductAttributeValues,
 )
 
 
@@ -122,3 +124,7 @@ class StockAdmin(admin.ModelAdmin):
     """
 
     list_display = ["id", "product_inventory", "units", "units_sold"]
+
+
+admin.site.register(ProductAttributeValues)
+admin.site.register(ProductTypeAttribute)

@@ -21,4 +21,5 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("v1/", include("shared.authentication.urls")),
     path("v1/", include("ecommerce.stores.urls")),
+    path("v1/", include("ecommerce.inventory.urls")),
 ]
