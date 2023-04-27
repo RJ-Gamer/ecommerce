@@ -3,8 +3,6 @@ Product Inventory Model
 """
 
 from django.db import models
-from django.utils.text import slugify
-from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from shared.utils.functions import generate_unique_code
 from shared.utils import constants
@@ -14,9 +12,10 @@ from .product_type import ProductType
 from .product import Product
 from .brand import Brand
 from .product_attribute_value import ProductAttributeValue
+from .abstract import AbstractTimeStamp
 
 
-class ProductInventory(models.Model):
+class ProductInventory(AbstractTimeStamp, models.Model):
     """
     Product Inventory Model
     """
@@ -49,7 +48,6 @@ class ProductInventory(models.Model):
         related_name="product_attribute_values",
         through="ProductAttributeValues",
     )
-    is_active = models.BooleanField(_("Is Active"), default=False)
     is_default = models.BooleanField(_("Is Default"), default=False)
     is_digital = models.BooleanField(_("Is Digital"), default=False)
     is_on_sale = models.BooleanField(_("Is On Sale"), default=False)
@@ -64,10 +62,6 @@ class ProductInventory(models.Model):
     )
     weight = models.FloatField(default=0)
     tags = models.ManyToManyField(Tag, related_name="product_inventory")
-    created_at = models.DateTimeField(
-        _("Created At"), auto_now_add=timezone.now, editable=False
-    )
-    updated_at = models.DateTimeField(_("Updated At"), auto_now=timezone.now)
 
     class Meta:
         """
